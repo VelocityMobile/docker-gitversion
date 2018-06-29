@@ -1,0 +1,2 @@
+# docker-gitversion
+Gitversion docker
