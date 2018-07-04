@@ -21,5 +21,7 @@ git log --merges `git describe --tags --always --abbrev=0`..HEAD --pretty=format
 git config  user.email "ci@velocityapp.com"
 git config  user.name "CI"
 gitversion /showvariable SemVer > $VERSION_FILE
-cat $VERSION_FILE | xargs -I % git tag -a '%' -F notes.txt
+
+# Ignore Errors
+cat $VERSION_FILE | xargs -I % git tag -a '%' -F notes.txt || true
 git push --tags
