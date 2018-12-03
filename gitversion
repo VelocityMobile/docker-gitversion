@@ -1,2 +1,2 @@
 #!/bin/bash
-mono /usr/lib/GitVersion/GitVersion.exe "$@"
+dotnet /app/GitVersion.dll "$@"

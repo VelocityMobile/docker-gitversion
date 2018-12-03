@@ -1,6 +1,12 @@
-FROM gittools/gitversion
+FROM gittools/gitversion-dotnetcore:linux
 
-COPY gitversion gitversion
+RUN apt-get install git -y
+
+RUN apt-get clean autoclean && \
+    apt-get autoremove --yes && \
+    rm -rf /var/lib/{apt,dpkg,cache,log}/
+
+COPY gitversion /usr/lib/GitVersion/gitversion
 
 RUN ln -s /usr/lib/GitVersion/gitversion /usr/local/bin/gitversion
 
@@ -12,4 +18,4 @@ RUN mkdir -p /usr/app/src
 
 WORKDIR /usr/app/src
 
-ENTRYPOINT bash
+ENTRYPOINT sh
