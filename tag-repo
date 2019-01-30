@@ -20,7 +20,8 @@ done
 git log --merges `git describe --tags --always --abbrev=0`..HEAD --pretty=format:'%s: %b %N' > notes.txt
 git config  user.email "ci@velocityapp.com"
 git config  user.name "CI"
-gitversion /showvariable SemVer > $VERSION_FILE
+
+version-file -o $VERSION_FILE
 
 # Ignore Errors
 cat $VERSION_FILE | xargs -I % git tag -a '%' -F notes.txt || true
